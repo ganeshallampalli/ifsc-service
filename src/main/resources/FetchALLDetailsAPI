@@ -1,0 +1,17 @@
+curl -X POST \
+  https://kyle-bank-ifsc.herokuapp.com/api/v1/branches \
+  -H 'Accept: */*' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGeWxlSUZTQyIsImp0aSI6IkdhbmVzaDEyMzQ1RnlsZTEyMzQ1IiwiaWF0IjoxNTY2NzQyNTM0LCJleHAiOjE1NjcxNzQ1MzMsIm5hbWUiOiJGeWxlIEdhbmVzaCIsImFkbWluIjp0cnVlfQ.WTiRwYTJl1Ufg0tcJcDML-CMrI06CpQtNw2tWrk2_h8' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Length: 104' \
+  -H 'Content-Type: application/json' \
+  -H 'Host: kyle-bank-ifsc.herokuapp.com' \
+  -H 'cache-control: no-cache' \
+  -d '{
+    "bankName": "ABHYUDAYA COOPERATIVE BANK LIMITED",
+    "city": "MUMBAI",
+    "limit": 10,
+    "offset": 1
+}'
