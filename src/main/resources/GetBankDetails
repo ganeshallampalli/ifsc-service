@@ -1,10 +1,10 @@
 curl -X GET \
-  https://fyle-bank-ifsc.herokuapp.com/api/v1/banks/AKJB0000004 \
+  'https://fyle-bank-ifsc.herokuapp.com/api/v1/banks/?ifsc=AKJB0000005' \
   -H 'Accept: */*' \
   -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGeWxlSUZTQyIsImp0aSI6IkdhbmVzaDEyMzQ1RnlsZTEyMzQ1IiwiaWF0IjoxNTY2NzQyNTM0LCJleHAiOjE1NjcxNzQ1MzMsIm5hbWUiOiJGeWxlIEdhbmVzaCIsImFkbWluIjp0cnVlfQ.WTiRwYTJl1Ufg0tcJcDML-CMrI06CpQtNw2tWrk2_h8' \
   -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
-  -H 'Host: kyle-bank-ifsc.herokuapp.com' \
+  -H 'Host: fyle-bank-ifsc.herokuapp.com' \
   -H 'cache-control: no-cache'
