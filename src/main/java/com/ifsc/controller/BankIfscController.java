@@ -33,7 +33,7 @@ public class BankIfscController {
 	@Autowired
 	private JWTUtil jwtUtil;
 
-	@GetMapping("/v1/banks/{ifsc}")
+	@GetMapping("/v1/banks")
 	@ApiOperation(value = "Fetch Bank Details by IFSC", response = FetchBankIfscResponse.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "Bank details fetched successfully"),
 			@ApiResponse(code = 403, message = "Unauthorized Access"),
