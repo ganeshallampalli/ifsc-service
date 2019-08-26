@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ifsc.entity.service.IBranchDAOService;
@@ -39,7 +40,7 @@ public class BankIfscController {
 			@ApiResponse(code = 404, message = "API Not Found"),
 			@ApiResponse(code = 10001, message = "Couldn't find data for given IFSC Code") })
 	public BaseResponse<FetchBankIfscResponse> fetchBankDetails(@RequestHeader("Authorization") String jwt,
-			@PathVariable("ifsc") String ifsc) {
+			@RequestParam("ifsc") String ifsc) {
 		BaseResponse<FetchBankIfscResponse> baseResponse = new BaseResponse<>();
 		if(jwtUtil.validateJWT(jwt)) {
 			baseResponse = iBranchDAOService.findBranchDetailsByIfscCode(ifsc);
@@ -50,7 +51,7 @@ public class BankIfscController {
 		return baseResponse;
 	}
 
-	@PostMapping("/v1/branches")
+	@GetMapping("/v1/branches")
 	@ApiOperation(value = "Fetch Branch Details by name and city", response = FetchBankDetailsByCityResponse.class)
 	@ApiResponses({ @ApiResponse(code = 200, message = "Branch details fetched successfully"),
 			@ApiResponse(code = 403, message = "Unauthorized Access"),
@@ -59,8 +60,16 @@ public class BankIfscController {
 			@ApiResponse(code = 10003, message = "Offset cannot be zero") })
 	public BaseResponse<FetchBankDetailsByCityResponse> fetchBranchesByBankNameAndCity(
 			@RequestHeader("Authorization") String jwt,
-			@RequestBody FetchBankDetailsByCityRequest fetchBankDetailsByCityRequest) {
+			@RequestParam(name = "bankName") String bankName,
+			@RequestParam(name = "city" ) String city,
+			@RequestParam(name = "offset") Integer offset,
+			@RequestParam(name = "limit") Integer limit) {
 		BaseResponse<FetchBankDetailsByCityResponse> baseResponse = new BaseResponse<>();
+		 FetchBankDetailsByCityRequest fetchBankDetailsByCityRequest = new FetchBankDetailsByCityRequest();
+		 fetchBankDetailsByCityRequest.setBankName(bankName);
+		 fetchBankDetailsByCityRequest.setCity(city);
+		 fetchBankDetailsByCityRequest.setLimit(limit);
+		 fetchBankDetailsByCityRequest.setOffset(offset);
 		if(jwtUtil.validateJWT(jwt)) {
 			baseResponse = iBranchDAOService.fetchBranchesByBankNameAndCity(fetchBankDetailsByCityRequest);
 		} else {
